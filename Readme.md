@@ -49,3 +49,9 @@ Now you know the port, you can login to the `mpi_head` conatiner. The username i
  ```
  $> ssh -p 23227 mpirun@localhost
  ```
+
+For testing dispel4py with MPI
+ 
+ ```
+ mpiexec -n 6 dispel4py mpi dispel4py.examples.graph_testing.pipeline_test
+ ```
