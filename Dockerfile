@@ -51,3 +51,30 @@ RUN chown mpirun:mpirun /home/mpirun/mpi4py_benchmarks
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
+
+
+#-------------------------------------------------------------
+# Install obspy
+#-------------------------------------------------------------
+RUN yes |  apt-get update
+RUN yes |  apt-get install python
+RUN yes |  apt-get install python-dev
+RUN yes |  apt-get install python-setuptools
+RUN yes |  apt-get install python-numpy
+RUN yes |  apt-get install python-numpy-dev
+RUN yes |  apt-get install python-scipy
+RUN yes |  apt-get install python-matplotlib
+RUN yes |  apt-get install python-lxml
+RUN yes |  apt-get install python-sqlalchemy
+RUN yes |  apt-get install python-suds
+RUN yes |  apt-get install ipython
+
+RUN pip install obspy
+
+#---------------------------------------------------------------
+# Install dispel4py
+#---------------------------------------------------------------
+RUN apt-get update && apt-get install wget curl python-dev python-pip python-setuptools git openmpi-bin openmpi-common libopenmpi-dev -y
+# install dispel4py latest 
+RUN pip install git+git://github.com/dispel4py/dispel4py.git@master
+
