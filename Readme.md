@@ -34,7 +34,7 @@ the host system, so you can log into it to start your MPI applications.
 The following command will start one `mpi_head` container and three `mpi_node` containers: 
 
 ```
-$> docker-compose scale mpi_head=1 mpi_node=3
+$> docker-compose scale mpi_node=16 mpi_head=1
 ```
 Once all containers are running, figure out the host port on which Docker exposes the  SSH server of the  `mpi_head` container: 
 
@@ -42,12 +42,12 @@ Once all containers are running, figure out the host port on which Docker expose
 $> 
 ```
 
-Now you know the port, you can login to the `mpi_head` conatiner. The username is `mpirun`:
+Now you know the port, you can login to the `mpi_head` container. The username is `mpirun`:
 
-> TODO: Password
 
  ```
- $> ssh -p 23227 mpirun@localhost
+ $> chmod 400 ssh/id_rsa.mpi
+ $> ssh -i ssh/id_rsa.mpi -p 23227 mpirun@localhost
  ```
 
 For testing dispel4py with MPI
