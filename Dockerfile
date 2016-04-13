@@ -78,3 +78,8 @@ RUN apt-get update && apt-get install wget curl python-dev python-pip python-set
 # install dispel4py latest 
 RUN pip install git+git://github.com/dispel4py/dispel4py.git@master
 
+#---------------------------------------------------------------
+#LD_LIBRARY_PATH
+#---------------------------------------------------------------
+
+RUN export LD_LIBRARY_PATH=/usr/lib/openmpi/lib/
