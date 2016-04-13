@@ -34,12 +34,13 @@ the host system, so you can log into it to start your MPI applications.
 The following command will start one `mpi_head` container and three `mpi_node` containers: 
 
 ```
+$> docker-compose up -d
 $> docker-compose scale mpi_node=16 mpi_head=1
 ```
 Once all containers are running, figure out the host port on which Docker exposes the  SSH server of the  `mpi_head` container: 
 
 ```
-$> 
+$> docker-compose ps
 ```
 
 Now you know the port, you can login to the `mpi_head` container. The username is `mpirun`:
