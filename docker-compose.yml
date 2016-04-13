@@ -1,10 +1,10 @@
 mpi_head:
-  image: openmpi
+  image: rosafilgueira/openmpi
   ports: 
    - "22"
   links: 
    - mpi_node
 
 mpi_node: 
-  image: openmpi
+  image: rosafilgueira/openmpi
 
