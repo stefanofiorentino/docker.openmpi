@@ -43,12 +43,12 @@ Once all containers are running, figure out the host port on which Docker expose
 $> docker-compose ps
 ```
 
-Now you know the port, you can login to the `mpi_head` container. The username is `mpirun`:
+Now you know the port, you can login to the `mpi_head` container. The username is `tutorial`:
 
 
  ```
  $> chmod 400 ssh/id_rsa.mpi
- $> ssh -i ssh/id_rsa.mpi -p 23227 mpirun@localhost
+ $> ssh -i ssh/id_rsa.mpi -p 23227 tutorial@localhost
  ```
 
 For testing an mpi4py example using the mpi_nodes:
