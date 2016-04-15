@@ -74,12 +74,18 @@ RUN pip install obspy
 #---------------------------------------------------------------
 # Install dispel4py
 #---------------------------------------------------------------
+RUN yes |  apt-get install zip
+RUN yes |  apt-get install unzip
+RUN yes |  apt-get install vim
 RUN apt-get update && apt-get install wget curl python-dev python-pip python-setuptools git openmpi-bin openmpi-common libopenmpi-dev -y
+
 # install dispel4py latest 
 RUN git clone https://github.com/dispel4py/dispel4py.git
 
 ADD tc_cross_correlation /home/tutorial/dispel4py/tc_cross_correlation
 RUN chown tutorial:tutorial /home/tutorial/dispel4py/tc_cross_correlation
+ADD command-preproces.sh  /home/tutorial/.
+RUN chown tutorial:tutorial /home/tutorial/command-preproces.sh
 
 #---------------------------------------------------------------
 #LD_LIBRARY_PATH
