@@ -12,7 +12,7 @@ RUN apt-get update -y && \
             python-virtualenv python-scipy gcc gfortran openmpi-checkpoint binutils
 
 RUN mkdir /var/run/sshd
-RUN echo 'root:mpirun' | chpasswd
+RUN echo 'root:tutorial' | chpasswd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # SSH login fix. Otherwise user is kicked off after login
@@ -22,32 +22,32 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 # ------------------------------------------------------------
-# Add an 'mpirun' user
+# Add an 'tutorial' user
 # ------------------------------------------------------------
 
-RUN adduser --disabled-password --gecos "" mpirun && \
-    echo "mpirun ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-ENV HOME /home/mpirun
+RUN adduser --disabled-password --gecos "" tutorial && \
+    echo "tutorial ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+ENV HOME /home/tutorial
 
 # ------------------------------------------------------------
 # Set-Up SSH with our Github deploy key
 # ------------------------------------------------------------
 
-RUN mkdir /home/mpirun/.ssh/
-ADD ssh/config /home/mpirun/.ssh/config
-ADD ssh/id_rsa.mpi /home/mpirun/.ssh/id_rsa
-ADD ssh/id_rsa.mpi.pub /home/mpirun/.ssh/id_rsa.pub
-ADD ssh/id_rsa.mpi.pub /home/mpirun/.ssh/authorized_keys
+RUN mkdir /home/tutorial/.ssh/
+ADD ssh/config /home/tutorial/.ssh/config
+ADD ssh/id_rsa.mpi /home/tutorial/.ssh/id_rsa
+ADD ssh/id_rsa.mpi.pub /home/tutorial/.ssh/id_rsa.pub
+ADD ssh/id_rsa.mpi.pub /home/tutorial/.ssh/authorized_keys
 
-RUN chmod -R 600 /home/mpirun/.ssh/* && \
-    chown -R mpirun:mpirun /home/mpirun/.ssh
+RUN chmod -R 600 /home/tutorial/.ssh/* && \
+    chown -R tutorial:tutorial /home/tutorial/.ssh
 
 # ------------------------------------------------------------
 # Copy Rosa's MPI4PY example scripts
 # ------------------------------------------------------------
 
-ADD mpi4py_benchmarks /home/mpirun/mpi4py_benchmarks
-RUN chown mpirun:mpirun /home/mpirun/mpi4py_benchmarks
+ADD mpi4py_benchmarks /home/tutorial/mpi4py_benchmarks
+RUN chown tutorial:tutorial /home/tutorial/mpi4py_benchmarks
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
