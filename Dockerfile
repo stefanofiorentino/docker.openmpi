@@ -83,10 +83,10 @@ RUN apt-get update && apt-get install wget curl python-dev python-pip python-set
 RUN git clone https://github.com/dispel4py/dispel4py.git
 
 ADD tc_cross_correlation /home/tutorial/dispel4py/tc_cross_correlation
-RUN chown tutorial:tutorial /home/tutorial/dispel4py/tc_cross_correlation
+RUN chown tutorial:tutorial -R /home/tutorial/dispel4py/tc_cross_correlation
 ADD command-preproces.sh  /home/tutorial/.
+RUN chmod +x /home/tutorial/command-preproces.sh  
 RUN chown tutorial:tutorial /home/tutorial/command-preproces.sh
-
 #---------------------------------------------------------------
 #LD_LIBRARY_PATH
 #---------------------------------------------------------------
