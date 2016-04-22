@@ -80,10 +80,12 @@ RUN yes |  apt-get install vim
 RUN apt-get update && apt-get install wget curl python-dev python-pip python-setuptools git openmpi-bin openmpi-common libopenmpi-dev -y
 
 # install dispel4py latest 
+WORKDIR /home/tutorial
 RUN git clone https://github.com/dispel4py/dispel4py.git
+RUN cd dispel4py && python setup.py install
 
 ADD tc_cross_correlation /home/tutorial/dispel4py/tc_cross_correlation
-RUN chown tutorial:tutorial -R /home/tutorial/dispel4py
+RUN chown tutorial:tutorial -R /home/tutorial/dispel4py/tc_cross_correlation
 ADD command-preproces.sh  /home/tutorial/.
 RUN chmod +x /home/tutorial/command-preproces.sh  
 RUN chown tutorial:tutorial /home/tutorial/command-preproces.sh
