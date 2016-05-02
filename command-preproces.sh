@@ -16,7 +16,7 @@ do ssh $f "rm -rf /home/tutorial/dispel4py/tc_cross_correlation/OUTPUT/DATA"
    ssh $f "mkdir /home/tutorial/dispel4py/tc_cross_correlation/OUTPUT/DATA"
 done
 
-mpiexec -n 6 -hostfile /home/tutorial/machines python -m dispel4py.new.processor mpi tc_cross_correlation/realtime_prep.py -f tc_cross_correlation/realtime_xcorr_input.jsn 
+mpiexec -n 16 -hostfile /home/tutorial/machines python -m dispel4py.new.processor mpi tc_cross_correlation/realtime_prep.py -f tc_cross_correlation/realtime_xcorr_input.jsn 
 
 for f in `cat /home/tutorial/machines`; 
 do scp -r $f:/home/tutorial/dispel4py/tc_cross_correlation/OUTPUT/DATA/* /home/tutorial/dispel4py/tc_cross_correlation/OUTPUT/DATA/
