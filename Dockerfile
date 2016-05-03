@@ -86,9 +86,12 @@ RUN cd dispel4py && python setup.py install
 
 ADD tc_cross_correlation /home/tutorial/dispel4py/tc_cross_correlation
 RUN chown tutorial:tutorial -R /home/tutorial/dispel4py/tc_cross_correlation
-ADD command-preproces.sh  /home/tutorial/.
-RUN chmod +x /home/tutorial/command-preproces.sh  
-RUN chown tutorial:tutorial /home/tutorial/command-preproces.sh
+ADD command-preprocess.sh  /home/tutorial/.
+ADD command-postprocess.sh  /home/tutorial/.
+RUN chmod +x /home/tutorial/command-preprocess.sh  
+RUN chown tutorial:tutorial /home/tutorial/command-preprocess.sh
+RUN chmod +x /home/tutorial/command-postprocess.sh  
+RUN chown tutorial:tutorial /home/tutorial/command-postprocess.sh
 #---------------------------------------------------------------
 #LD_LIBRARY_PATH
 #---------------------------------------------------------------
