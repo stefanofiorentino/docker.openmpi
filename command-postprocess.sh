@@ -4,8 +4,6 @@ export PYTHON_PATH=.
 rm -rf /home/tutorial/dispel4py/tc_cross_correlation/OUTPUT/XCORR
 mkdir /home/tutorial/dispel4py/tc_cross_correlation/OUTPUT/XCORR
 
-OLD_PATH=`pwd`
-
 cd /home/tutorial/dispel4py
 
 for f in `cat /home/tutorial/machines`; 
