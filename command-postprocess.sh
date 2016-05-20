@@ -11,4 +11,4 @@ do ssh $f "rm -rf /home/tutorial/dispel4py/tc_cross_correlation/OUTPUT/XCORR"
    ssh $f "mkdir /home/tutorial/dispel4py/tc_cross_correlation/OUTPUT/XCORR"
 done
 
-mpiexec -n 16 -hostfile /home/tutorial/machines python -m dispel4py.new.processor mpi tc_cross_correlation/xcorr_storm.py 
+mpiexec -n 16 -hostfile /home/tutorial/machines python -m dispel4py.new.processor mpi tc_cross_correlation/realtime_xcorr.py
