@@ -19,7 +19,7 @@ mpi_head:
   ports: 
    - "22"
   links: 
-   - mpi_worker
+   - mpi_node
 
 mpi_node: 
   image: openmpi
