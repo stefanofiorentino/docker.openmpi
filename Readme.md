@@ -54,7 +54,7 @@ Now you know the port, you can login to the `mpi_head` container. The username i
 For testing an mpi4py example using the mpi_nodes:
 	
 	cd mpi4py_benchmarks
-	create machines file from /etc/hosts (copy only the IP adresses, nothing else)
+	cat /etc/hosts | grep mpi_node --color=none | awk '{print $1}' | sort -u > machines
 	mpiexec -hostfile machines -n 3 python helloworld.py   	
 
 For testing dispel4py with mpi mapping:
